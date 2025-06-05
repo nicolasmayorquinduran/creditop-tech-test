@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns" version="1.1" viewBox="0 0 221 192.42">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #4c39ff;
+      }
+
+      .st1 {
+        fill: #fff;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <rect class="st1" width="220.99" height="192.42"/>
+  <rect class="st0" width="78.17" height="42.09" rx="1" ry="1"/>
+  <rect class="st0" y="78.17" width="54.12" height="42.09" rx="1" ry="1"/>
+  <rect class="st0" y="150.33" width="96.21" height="42.09" rx="1" ry="1"/>
+</svg>
