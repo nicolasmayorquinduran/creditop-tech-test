@@ -2,7 +2,6 @@
 
 import React from "react";
 import { StepContentProps, StepperProps } from "./interfaces";
-import { StepStatus } from "./components/step-indicator/enums";
 import StepIndicator from "./components/step-indicator/stepIndicator";
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
@@ -28,13 +27,14 @@ export const Stepper = <State extends unknown = undefined>({
             <StepIndicator
               key={props.id}
               {...props}
-              status={StepStatus.COMPLETED}
-              label={String(index + 1)}
+              isLastStep={Boolean(state.hasNextStep)}
+              activeIndex={state.currentStep}
+              index={index}
             />
           </ol>
         ))}
       </nav>
-      <CurrentStep {...currentStepProps} />
+      <CurrentStep {...currentStepProps} className="p-8 md:p-32" />
     </div>
   );
 };

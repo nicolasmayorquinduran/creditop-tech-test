@@ -7,11 +7,12 @@ import { useStepperLib } from "@lib/stepper/hooks/useStepper";
 import { useState } from "react";
 import type { StateCrediApplicationSteps } from "./interfaces";
 import type { NextPage } from "next";
+import { SummaryStep } from "./components/summaryStep/summaryStep";
 
 const Home: NextPage = () => {
   const stepsComponents: StepperChildren<
     StateCrediApplicationSteps | undefined
-  >[] = [IdentityStep, TermStep];
+  >[] = [IdentityStep, TermStep, SummaryStep];
   const features = useStepperLib<StateCrediApplicationSteps | undefined>({
     stepsComponents,
   });
