@@ -87,13 +87,14 @@ export const IdentityStep: React.FC<
         <Button
           disabled
           className="px-6 py-2 border border-gray-300 text-gray-600 rounded-md"
+          variant="outlined"
         >
           No corresponde
         </Button>
         <Button
           onClick={handleClick}
           disabled={!dateParts}
-          className="px-6 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50"
+          variant="filled"
         >
           Confirmar
         </Button>
