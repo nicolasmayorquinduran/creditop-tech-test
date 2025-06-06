@@ -1,17 +1,7 @@
 "use client";
 
-import { Field, FieldProps } from "@headlessui/react";
-import { DetailedHTMLProps, OptionHTMLAttributes } from "react";
-
-type SelectFieldOption = DetailedHTMLProps<
-  OptionHTMLAttributes<HTMLOptionElement>,
-  HTMLOptionElement
->;
-
-interface SelectFieldProps extends FieldProps {
-  optionsKeySufix: string;
-  options: SelectFieldOption[];
-}
+import { Select } from "@headlessui/react";
+import { SelectFieldProps } from "./interfaces";
 
 export const SelectField: React.FC<SelectFieldProps> = ({
   optionsKeySufix,
@@ -19,10 +9,10 @@ export const SelectField: React.FC<SelectFieldProps> = ({
   ...selectProps
 }) => {
   return (
-    <Field {...selectProps}>
+    <Select {...selectProps} name="optionsKeySufix">
       {options.map((optionProps, index) => (
         <option key={`${optionsKeySufix}-${index}`} {...optionProps} />
       ))}
-    </Field>
+    </Select>
   );
 };

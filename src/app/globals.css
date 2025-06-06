@@ -178,7 +178,7 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: rgb(0, 0, 0);
       --background-overlay-multiplier: 1;
@@ -281,7 +281,7 @@
   --switch-checked-disabled-opacity: 0.25;
   --shadow-key-umbra-color: rgb(0, 0, 0);
   }
-}
+} */
 
 * {
     padding: 0;
