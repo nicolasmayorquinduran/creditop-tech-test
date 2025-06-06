@@ -1,4 +1,4 @@
-import type { StepContentProps } from "./components/stepContent/interfaces";
+import type { StepContentProps } from "./interfaces";
 
 export type StepperChildren<State> = React.ComponentType<
   StepContentProps<State>

@@ -4,7 +4,6 @@ import { Button } from "@lib/button/button";
 import { Card } from "@lib/card/card";
 import { Checkbox } from "@lib/checkbox/checkbox";
 import { SelectField } from "@lib/select/select";
-import { StepContentProps } from "@lib/stepper/components/stepContent/interfaces";
 import { FormEvent, useState } from "react";
 import {
   SelectDays,
@@ -14,6 +13,7 @@ import {
 } from "./constants";
 import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
 import type { DateParts } from "@app/(home)/types";
+import { StepContentProps } from "@lib/stepper/interfaces";
 
 export const IdentityStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>

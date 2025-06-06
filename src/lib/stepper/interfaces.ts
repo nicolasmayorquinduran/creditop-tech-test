@@ -1,5 +1,5 @@
 import { UseStepper } from "headless-stepper";
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { StepperChildren } from "./types";
 
 export interface StepsState<State> {
@@ -15,4 +15,10 @@ export interface StepperProps<State> {
 
 export interface UseStepNodesOutput<State> {
   getStepNodes: (children: ReactNode | ReactNode[]) => StepperChildren<State>[];
+}
+
+export interface StepContentProps<State>
+  extends HTMLAttributes<HTMLDivElement>,
+    UseStepper {
+  sharedStepsState: StepsState<State>;
 }

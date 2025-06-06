@@ -6,26 +6,28 @@ import { TermStep } from "./components/termStep/termStep";
 import { useStepperLib } from "@lib/stepper/hooks/useStepper";
 import { useState } from "react";
 import type { StateCrediApplicationSteps } from "./interfaces";
+import type { NextPage } from "next";
 
-export default function Home() {
+const Home: NextPage = () => {
   const stepsComponents: StepperChildren<
     StateCrediApplicationSteps | undefined
   >[] = [IdentityStep, TermStep];
-  const features = useStepperLib({ stepsComponents });
+  const features = useStepperLib<StateCrediApplicationSteps | undefined>({
+    stepsComponents,
+  });
   const [sharedStepsState, setSharedStepsState] =
     useState<StateCrediApplicationSteps>();
   return (
-    <>
-      <Stepper<StateCrediApplicationSteps | undefined>
-        features={features}
-        sharedStepsState={{
-          state: sharedStepsState,
-          setState: (newState) => setSharedStepsState(newState),
-        }}
-      >
-        {stepsComponents}
-      </Stepper>
-      <span>{JSON.stringify(sharedStepsState)}</span>
-    </>
+    <Stepper<StateCrediApplicationSteps | undefined>
+      features={features}
+      sharedStepsState={{
+        state: sharedStepsState,
+        setState: (newState) => setSharedStepsState(newState),
+      }}
+    >
+      {stepsComponents}
+    </Stepper>
   );
-}
+};
+
+export default Home;

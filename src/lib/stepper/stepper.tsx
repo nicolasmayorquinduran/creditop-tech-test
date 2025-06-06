@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { StepperProps } from "./interfaces";
+import { StepContentProps, StepperProps } from "./interfaces";
 import { StepStatus } from "./components/step-indicator/enums";
 import StepIndicator from "./components/step-indicator/stepIndicator";
-import { StepContentProps } from "./components/stepContent/interfaces";
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export const Stepper = <State extends unknown = undefined>({

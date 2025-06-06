@@ -4,7 +4,7 @@ import { Card } from "@lib/card/card";
 import { userSelected } from "../identityStep/constants";
 import { useDialog } from "@lib/hooks/useDialog";
 import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
-import type { StepContentProps } from "@lib/stepper/components/stepContent/interfaces";
+import { StepContentProps } from "@lib/stepper/interfaces";
 
 export const SummaryStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>

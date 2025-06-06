@@ -5,7 +5,7 @@ import { getDateParts } from "@app/(home)/utils";
 import { Button } from "@lib/button/button";
 import { useState } from "react";
 import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
-import type { StepContentProps } from "@lib/stepper/components/stepContent/interfaces";
+import { StepContentProps } from "@lib/stepper/interfaces";
 
 export const TermStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>
