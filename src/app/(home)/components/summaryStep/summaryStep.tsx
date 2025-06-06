@@ -28,27 +28,37 @@ export const SummaryStep: React.FC<
     );
 
   const idExpirationDate = getDateParts(state.idExpirationDate);
-  const paymentTerm = getDateParts(state.idExpirationDate);
+  const paymentTerm = getDateParts(state.paymentTerm);
 
   return (
     <>
       {dialog}
-      <div>
-        <h1>
-          Estimado {userSelected.name}, porfavor revise la información
+      <div className="flex flex-col items-center justify-center text-center p-4">
+        <h1 className="text-2xl font-bold mb-2">
+          Estimado {userSelected.name}, por favor revise la información
           suministrada
         </h1>
-        <p>
+        <p className="text-gray-600 mb-6">
           Verifica antes de enviar la información, una vez enviada, no podra
           volver a ser modificada
         </p>
-        <Card>
-          <article>
-            <small>
-              Fecha de expedición del documento <strong>{formattedId}</strong>
-            </small>
-            <article>
-              <span>{`${idExpirationDate.day}-${idExpirationDate.month}`}</span>
+        <Card className="w-full max-w-md mb-6">
+          <div className="flex flex-col space-y-4">
+            <article className="flex flex-col items-start">
+              <small className="text-gray-500 text-sm">
+                Fecha de expedición del documento:
+              </small>
+              <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
+                <span>{`${idExpirationDate.day}-${idExpirationDate.month}`}</span>
+                <strong>{idExpirationDate.year}</strong>
+              </article>
+            </article>
+            <article className="flex flex-col items-start">
+              <small className="text-gray-500 text-sm">
+                Plazo de pago seleccionado:
+              </small>
+              <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
+                <span>{`${paymentTerm.day}-${paymentTerm.month}`}</span>
               <strong>{idExpirationDate.year}</strong>
             </article>
           </article>
