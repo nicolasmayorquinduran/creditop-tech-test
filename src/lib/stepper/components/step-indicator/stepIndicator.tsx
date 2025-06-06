@@ -5,7 +5,6 @@ import type { StepProps } from "./interfaces";
 export default function StepIndicator({
   index,
   activeIndex,
-  // isLastStep,
   ...restProps
 }: StepProps) {
   let status: StepStatus = StepStatus.PENDING;

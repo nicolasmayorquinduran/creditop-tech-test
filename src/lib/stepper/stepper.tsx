@@ -3,6 +3,7 @@
 import React from "react";
 import { StepContentProps, StepperProps } from "./interfaces";
 import StepIndicator from "./components/step-indicator/stepIndicator";
+import clsx from "clsx";
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export const Stepper = <State extends unknown = undefined>({
@@ -18,16 +19,18 @@ export const Stepper = <State extends unknown = undefined>({
   };
   return (
     <div>
-      <nav style={{ display: "flex" }} {...stepperProps}>
+      <nav className="flex" {...stepperProps}>
         {stepsProps?.map((props, index) => (
           <ol
             key={index}
-            className="flex items-center w-full text-xs text-gray-900 font-medium sm:text-base"
+            className={clsx([
+              "flex items-center text-xs text-gray-900 font-medium sm:text-base",
+              { [" w-full"]: index < stepsProps.length - 1 },
+            ])}
           >
             <StepIndicator
               key={props.id}
               {...props}
-              isLastStep={Boolean(state.hasNextStep)}
               activeIndex={state.currentStep}
               index={index}
             />
