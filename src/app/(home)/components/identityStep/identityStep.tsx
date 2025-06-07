@@ -72,7 +72,9 @@ export const IdentityStep: React.FC<
         />
       </form>
       <article className="w-full justify-center items-center flex mb-6">
-        <span className="text-yellow-600 mr-3">!</span>
+        <span className="bg-yellow-500 text-white mr-3 py-1 px-3 rounded">
+          !
+        </span>
         <Card className="flex items-center p-4 border border-yellow-500 bg-yellow-100 rounded-md">
           <Checkbox />
           <small className="text-gray-700 ml-2">
