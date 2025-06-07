@@ -2,6 +2,10 @@
 
 Test tech about layout and construction of a small screen flow used in a credit application.
 
+# Deployment in
+
+https://creditop-tech-test.vercel.app/
+
 ## Technical Test Documentation
 
 This document describes the development process for the technical test, focusing on the layout, building, and connection of functional screens within a simple web application simulating a credit application flow.
