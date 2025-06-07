@@ -83,12 +83,12 @@ export const IdentityStep: React.FC<
           !
         </span>
         <Card className="flex items-center p-4 border border-yellow-500 bg-yellow-100 rounded-md">
-          <Checkbox />
+          <Checkbox checked />
           <small className="text-gray-700 ml-2">
             ¿Confirmas que eres
-            <strong className="font-semibold">{userSelected.name}</strong> el
+            <strong className="font-semibold"> {userSelected.name} </strong> el
             titular de la cèdula
-            <strong className="font-semibold">{formattedId}</strong>?
+            <strong className="font-semibold"> {formattedId} </strong>?
           </small>
         </Card>
       </article>
