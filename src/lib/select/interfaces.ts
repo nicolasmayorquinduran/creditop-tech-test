@@ -8,5 +8,6 @@ export type SelectFieldOption = DetailedHTMLProps<
 
 export interface SelectFieldProps extends SelectProps {
   optionsKeySufix: string;
+  label?: string;
   options: SelectFieldOption[];
 }

@@ -10,7 +10,7 @@ export const SelectDays: SelectFieldOption[] = new Array(31)
   }));
 
 export const SelectMonths: SelectFieldOption[] = months.map<SelectFieldOption>(
-  (mont, index) => ({ label: mont, value: index })
+  (mont) => ({ label: mont, value: mont })
 );
 
 const bounderYear: number = 1950;
