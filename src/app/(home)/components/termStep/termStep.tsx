@@ -69,7 +69,7 @@ export const TermStep: React.FC<
       <Button
         onClick={handleClick}
         disabled={termSelected === undefined}
-        className="w-full bg-blue-500 text-white px-6 py-2 rounded-md disabled:opacity-50"
+        className="w-auto m-auto bg-blue-500 text-white px-6 py-2 rounded-md disabled:opacity-50"
       >
         Confirmar
       </Button>

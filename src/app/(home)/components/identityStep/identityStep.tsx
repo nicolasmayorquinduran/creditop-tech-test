@@ -16,12 +16,18 @@ import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
 import type { DateParts } from "@app/(home)/types";
 import { StepContentProps } from "@lib/stepper/interfaces";
 import clsx from "clsx";
+import { useDialog } from "@lib/hooks/useDialog";
 
 export const IdentityStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>
 > = ({ nextStep, sharedStepsState: { state, setState }, className }) => {
   const [dateParts, setDateParts] = useState<Partial<DateParts>>();
-
+  const { dialog, setIsOpen } = useDialog({
+    title: "Haz cancelado el proceso de solicitud",
+    body: "Pero puedes intentarlo en otra oportunidad, gracias!",
+    ctaText: "Cerrar",
+    ctaAction: (close) => close(),
+  });
   const formattedId = new Intl.NumberFormat("es-CO").format(userSelected.id);
 
   const onChange = (e: FormEvent<HTMLFormElement>) => {
@@ -41,6 +47,7 @@ export const IdentityStep: React.FC<
     <div
       className={clsx([className, "flex flex-col items-center justify-center"])}
     >
+      {dialog}
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Completa la fecha de expedición del documento*
       </h1>
@@ -72,7 +79,9 @@ export const IdentityStep: React.FC<
         />
       </form>
       <article className="w-full justify-center items-center flex mb-6">
-        <span className="text-yellow-600 mr-3">!</span>
+        <span className="bg-yellow-500 text-white mr-3 py-1 px-3 rounded">
+          !
+        </span>
         <Card className="flex items-center p-4 border border-yellow-500 bg-yellow-100 rounded-md">
           <Checkbox />
           <small className="text-gray-700 ml-2">
@@ -84,7 +93,10 @@ export const IdentityStep: React.FC<
         </Card>
       </article>
       <section className="flex space-x-4">
-        <Button className="px-6 py-2 border border-gray-300 text-gray-600 rounded-md">
+        <Button
+          onClick={() => setIsOpen(true)}
+          className="px-6 py-2 border border-red-500 text-red-500 rounded-md"
+        >
           No corresponde
         </Button>
         <Button
