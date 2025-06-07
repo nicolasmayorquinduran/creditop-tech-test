@@ -19,7 +19,7 @@ export const TermStep: React.FC<
       : undefined;
 
   const handleClick = () => {
-    if (!termSelected) return;
+    if (termSelected === undefined) return;
     setState({ ...state, paymentTerm: paymentTerms[termSelected] });
     nextStep();
   };
