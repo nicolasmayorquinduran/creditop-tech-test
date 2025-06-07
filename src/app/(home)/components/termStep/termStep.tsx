@@ -6,18 +6,26 @@ import { Button } from "@lib/button/button";
 import { useState } from "react";
 import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
 import { StepContentProps } from "@lib/stepper/interfaces";
+import clsx from "clsx";
 
 export const TermStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>
-> = ({ nextStep }) => {
+> = ({ nextStep, className, sharedStepsState: { setState, state } }) => {
   const [termSelected, setTermSelected] = useState<number>();
 
-  const daySelected = termSelected
-    ? paymentTerms[termSelected].getDate()
-    : undefined;
+  const daySelected =
+    termSelected !== undefined
+      ? paymentTerms[termSelected].getDate()
+      : undefined;
+
+  const handleClick = () => {
+    if (!termSelected) return;
+    setState({ ...state, paymentTerm: paymentTerms[termSelected] });
+    nextStep();
+  };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className={clsx([className, "flex flex-col gap-6 text-center"])}>
       <article className="flex flex-col gap-2">
         <h1 className="text-xl font-semibold text-gray-800">
           Elige tu fecha de pago
@@ -41,8 +49,8 @@ export const TermStep: React.FC<
                 onClick={() => setTermSelected(index)}
                 className={`flex flex-col items-center justify-center p-4 border rounded-md cursor-pointer ${
                   isSelected
-                    ? "bg-blue-500 border-blue-500 text-white"
-                    : "border-gray-300 text-gray-700"
+                    ? "bg-secondary-light border-secondary border-2"
+                    : "border-secondary border-2 text-gray-700"
                 }`}
               >
                 <span className="text-lg font-bold">{`${day}-${month}`}</span>
@@ -51,14 +59,18 @@ export const TermStep: React.FC<
             );
           })}
         </div>
-        {daySelected !== undefined && (
+        {termSelected !== undefined && (
           <p className="text-gray-700">
-            Tu fecha límite de pago será el{" "}
-            <strong>día {daySelected} de cada</strong> mes
+            Tu fecha límite de pago será el
+            <strong>{` día ${daySelected} de cada`}</strong> mes
           </p>
         )}
       </article>
-      <Button onClick={nextStep} disabled={termSelected === undefined} className="w-full bg-blue-500 text-white px-6 py-2 rounded-md disabled:opacity-50">
+      <Button
+        onClick={handleClick}
+        disabled={termSelected === undefined}
+        className="w-full bg-blue-500 text-white px-6 py-2 rounded-md disabled:opacity-50"
+      >
         Confirmar
       </Button>
     </div>

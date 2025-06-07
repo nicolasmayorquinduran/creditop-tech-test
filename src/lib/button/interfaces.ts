@@ -1,3 +1,3 @@
 import type { ButtonProps as ButtonPropsHeadlessUi } from "@headlessui/react";
 
-export type ButtonProps = ButtonPropsHeadlessUi & { variant?: "filled" | "outlined" };
+export type ButtonProps = ButtonPropsHeadlessUi;

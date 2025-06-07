@@ -37,7 +37,7 @@ export const Stepper = <State extends unknown = undefined>({
           </ol>
         ))}
       </nav>
-      <CurrentStep {...currentStepProps} className="p-8 md:p-32" />
+      <CurrentStep {...currentStepProps} className="p-8 md:p-24" />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { Check } from "@lib/icons";
 import { stepCircle, stepItem } from "./constants";
 import { StepStatus } from "./enums";
 import type { StepProps } from "./interfaces";
@@ -13,7 +14,9 @@ export default function StepIndicator({
   return (
     <li {...restProps} id="" className={stepItem({ status })}>
       <div className="block whitespace-nowrap z-10">
-        <span className={stepCircle({ status })}>{index + 1}</span>
+        <span className={stepCircle({ status })}>
+          {status === StepStatus.COMPLETED ? <Check /> : index + 1}
+        </span>
       </div>
     </li>
   );

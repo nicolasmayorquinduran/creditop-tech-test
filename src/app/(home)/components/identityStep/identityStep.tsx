@@ -25,7 +25,7 @@ export const IdentityStep: React.FC<
   const formattedId = new Intl.NumberFormat("es-CO").format(userSelected.id);
 
   const onChange = (e: FormEvent<HTMLFormElement>) => {
-    const { value, name } = e.currentTarget;
+    const { value, name } = e.target as HTMLInputElement;
     setDateParts((lastState) => ({ ...lastState, [name]: value }));
   };
 
@@ -84,17 +84,16 @@ export const IdentityStep: React.FC<
         </Card>
       </article>
       <section className="flex space-x-4">
-        <Button
-          disabled
-          className="px-6 py-2 border border-gray-300 text-gray-600 rounded-md"
-          variant="outlined"
-        >
+        <Button className="px-6 py-2 border border-gray-300 text-gray-600 rounded-md">
           No corresponde
         </Button>
         <Button
+          className="px-6 py-2 bg-primary text-white rounded-md disabled:opacity-50"
           onClick={handleClick}
-          disabled={!dateParts}
-          variant="filled"
+          disabled={
+            !dateParts ||
+            !Object.values(FormFieldKeysEnum).every((key) => key in dateParts)
+          }
         >
           Confirmar
         </Button>

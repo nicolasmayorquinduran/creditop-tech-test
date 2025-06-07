@@ -19,15 +19,17 @@ const Home: NextPage = () => {
   const [sharedStepsState, setSharedStepsState] =
     useState<StateCrediApplicationSteps>();
   return (
-    <Stepper<StateCrediApplicationSteps | undefined>
-      features={features}
-      sharedStepsState={{
-        state: sharedStepsState,
-        setState: (newState) => setSharedStepsState(newState),
-      }}
-    >
-      {stepsComponents}
-    </Stepper>
+    <>
+      <Stepper<StateCrediApplicationSteps | undefined>
+        features={features}
+        sharedStepsState={{
+          state: sharedStepsState,
+          setState: (newState) => setSharedStepsState(newState),
+        }}
+      >
+        {stepsComponents}
+      </Stepper>
+    </>
   );
 };
 

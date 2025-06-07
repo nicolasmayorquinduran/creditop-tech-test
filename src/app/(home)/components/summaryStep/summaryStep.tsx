@@ -5,11 +5,11 @@ import { userSelected } from "../identityStep/constants";
 import { useDialog } from "@lib/hooks/useDialog";
 import type { StateCrediApplicationSteps } from "@app/(home)/interfaces";
 import { StepContentProps } from "@lib/stepper/interfaces";
+import clsx from "clsx";
 
 export const SummaryStep: React.FC<
   StepContentProps<StateCrediApplicationSteps | undefined>
-> = ({ sharedStepsState: { state } }) => {
-  const formattedId = new Intl.NumberFormat("es-CO").format(userSelected.id);
+> = ({ sharedStepsState: { state }, className }) => {
   const { dialog, setIsOpen } = useDialog({
     title: "Felicidades",
     body: "Haz Hecho tu solicitud con éxito, pronto nos pondremos en contacto",
@@ -22,7 +22,7 @@ export const SummaryStep: React.FC<
 
   if (!state?.idExpirationDate || !state.paymentTerm)
     return (
-      <div>
+      <div className={clsx(["text-center text-2xl font-bold mb-2", className])}>
         <h1>No se han diligenciado los pasos anteriores en su totalidad</h1>
       </div>
     );
@@ -33,7 +33,12 @@ export const SummaryStep: React.FC<
   return (
     <>
       {dialog}
-      <div className="flex flex-col items-center justify-center text-center p-4">
+      <div
+        className={clsx([
+          "flex flex-col items-center justify-center text-center",
+          className,
+        ])}
+      >
         <h1 className="text-2xl font-bold mb-2">
           Estimado {userSelected.name}, por favor revise la información
           suministrada
@@ -43,34 +48,31 @@ export const SummaryStep: React.FC<
           volver a ser modificada
         </p>
         <Card className="w-full max-w-md mb-6">
-          <div className="flex flex-col space-y-4">
-            <article className="flex flex-col items-start">
-              <small className="text-gray-500 text-sm">
-                Fecha de expedición del documento:
-              </small>
-              <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
-                <span>{`${idExpirationDate.day}-${idExpirationDate.month}`}</span>
-                <strong>{idExpirationDate.year}</strong>
-              </article>
-            </article>
-            <article className="flex flex-col items-start">
-              <small className="text-gray-500 text-sm">
-                Plazo de pago seleccionado:
-              </small>
-              <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
-                <span>{`${paymentTerm.day}-${paymentTerm.month}`}</span>
+          <article className="flex flex-col items-start">
+            <small className="text-gray-500 text-sm">
+              Fecha de expedición del documento:
+            </small>
+            <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
+              <span>{`${idExpirationDate.day}-${idExpirationDate.month}`}</span>
               <strong>{idExpirationDate.year}</strong>
             </article>
           </article>
-          <article>
-            <small>Plazo de pago seleccionado</small>
-            <article>
+          <article className="flex flex-col items-start">
+            <small className="text-gray-500 text-sm">
+              Plazo de pago seleccionado:
+            </small>
+            <article className="flex items-baseline space-x-2 text-lg font-semibold text-gray-800">
               <span>{`${paymentTerm.day}-${paymentTerm.month}`}</span>
-              <strong>{paymentTerm.year}</strong>
+              <strong>{idExpirationDate.year}</strong>
             </article>
           </article>
         </Card>
-        <Button onClick={onSubmit}>Enviar</Button>
+        <Button
+          className="px-6 py-2 bg-primary text-white rounded-md disabled:opacity-50"
+          onClick={onSubmit}
+        >
+          Enviar
+        </Button>
       </div>
     </>
   );
